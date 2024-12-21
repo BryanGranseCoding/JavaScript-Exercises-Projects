@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Order Function</title>
+</head>
+<body>
+    <button onclick="onClick12">12px</button>
+    <button onclick="onClick14">14px</button>
+    <button onclick="onClick16">16px</button>
+
+    <script>
+const onClick12 = makeClickHandle(12)
+const onClick14 = makeClickHandle(14)
+const onClick16 = makeClickHandle(16)
+function makeClickHandle(size){
+    document.body.style.fontSize = `${size}px`;
+}//sample only
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Populate Array to Dropdown</title>
+</head>
+<body>
+    <div class="arraydropdown">
+        <select name="sibling" id="siblings">
+            <option value="Choose" disabled>Choose Siblings</option>
+        </select>
+    </div>
+    <div class="displaysiblings">
+        <p class="mySiblings" id="mySiblings">
+            Please select a siblings
+        </p>
+        <p class="genderSibling" id="genderSibling">
+           
+        </p>
+    </div>
+
+    <script>
+        const siblingList = ["Flordeliza", "Kristel Joyce", "Franse", "Floresto III"];
+        const genderSibling = {
+            gmale : "Male",
+            fmale : "Female"
+        }
+        let siblings = document.getElementById("siblings");
+        let mySiblings = document.querySelector("#mySiblings");
+        let mySiblingsGender = document.querySelector("#genderSibling");
+
+        siblingList.forEach(siblingL =>{
+            let option = document.createElement("option");
+            option.value = siblingL;
+            option.innerHTML = siblingL;
+            siblings.appendChild(option);
+
+        });
+
+        siblings.addEventListener("change", (e) => {
+            const selectedSibling = siblings.value;
+            
+            if(siblingList.includes(selectedSibling)) {
+                mySiblings.innerHTML = `You Selected: ${selectedSibling}`;
+            } else {
+                mySiblings.innerHTML = "Selected sibling not found in the list.";
+            }
+
+            if(selectedSibling === "Flordeliza" || selectedSibling === "Kristel Joyce"){
+                mySiblingsGender.innerHTML = `Gender: ${genderSibling.fmale}`;
+            } else{
+                mySiblingsGender.innerHTML = `Gender: ${genderSibling.gmale}`;
+            }
+
+            });
+
+
+
+
+    </script>
+</body>
+</html>

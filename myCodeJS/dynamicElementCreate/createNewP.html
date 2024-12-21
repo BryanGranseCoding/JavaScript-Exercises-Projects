@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create P tag</title>
+  </head>
+  <body>
+    <div id="div1">The text above has been created dynamically.</div>
+    <script>
+      let newDiv = document.createElement("div"); //creating new DIV tags
+      newDiv.setAttribute("id", "newDivData"); // inserting/adding ID
+      newDiv.classList.add("newDiv"); // inserting/adding Class name
+      let text = document.createTextNode("This is a dynamic text"); //creating text node for DIV
+      newDiv.append(text); //adding text to newDiv
+      const existingDiv = document.querySelector("#div1"); //accessing the existing div
+      document.body.insertBefore(newDiv, existingDiv); //assigning new DIV before the existing div
+    </script>
+  </body>
+</html>

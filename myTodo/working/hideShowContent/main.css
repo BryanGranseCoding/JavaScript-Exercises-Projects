@@ -1,0 +1,44 @@
+[id*="legacy-item"] {
+    cursor: pointer; 
+    }
+    
+    .active-legacy-item {
+    color: #6b63dd !important;
+    background-color: #fff;
+    }
+     
+    .hide-legacy-tab{  
+    display:none;
+    }
+     
+    .show-legacy-tab{
+    visibility: visible !important;
+    display: inline-block;
+    z-index: 12;
+       
+    position: relative !important;
+    left: 0 !important;
+    transform: translateX(0%) !important;
+    }
+       
+    .legacy-item-active {
+    background-color: #612c89;
+    color: #fff !important;
+    }
+     
+    .legacy-item-active h3{
+    color: #fff !important;
+    }
+
+
+/* 
+faq-item-1 = tab-item-1
+faq-tab-1 = content-item-1 
+https://www.youtube.com/watch?v=u1YwOCRI8p8
+https://www.elegantthemes.com/blog/divi-resources/how-to-structure-your-faq-with-custom-tabs-in-divi
+*/
+
+
+/* CSS Class: bg-overlay */
+
+

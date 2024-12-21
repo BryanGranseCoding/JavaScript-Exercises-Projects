@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factory Functions</title>
+</head>
+<body>
+    <div id="output">
+  
+        <p class="nameDisplay"></p>
+        <p class="talkFunctionDisplay"></p>
+        
+      </div>
+
+      <script>
+        function factoryPerson(name) {
+  return {
+    name,
+    talk(){
+      return `Hi👋 my name is ${this.name}`;
+    }
+  }
+}
+
+const nameDisplay = document.querySelector('.nameDisplay');
+const talkFunctionDisplay = document.querySelector('.talkFunctionDisplay');
+
+const me = factoryPerson('Bryan Doe');
+const you = factoryPerson('John Doe');
+
+nameDisplay.textContent = me.name;
+talkFunctionDisplay.textContent = you.talk();
+
+//test it on a browser console
+function talk(){
+  return `Hi! ${this.name}`;
+}
+
+const all = {
+  name: 'Party People',
+  talk //this is the function declared above
+}
+
+const everyone = {
+  name: 'Everyone',
+  talk //this is the function declared above
+}
+
+//this scenario is where you did not include the talk() function and so we need to use bind()
+const bindtalk = {
+  name: 'Devs'
+}
+
+const keeptalking = talk.bind(bindtalk)
+//you can also use talk.call(object) -> example: talk.call(all)
+
+//function with parameter using call to object
+function greetings(lang) {
+  if (lang === 'en'){
+  return `Hello! Good Day ${this.name}`;
+} else {
+  return `Kamusta, Magandang Araw Sayo ${this.name}`
+}
+}
+
+const fbCEO = {
+  name: 'Mark ZuckerBerg'
+}
+
+greetings.call(fbCEO, 'en'); // this will return: Hello! Good Day Mark ZuckerBerg!
+greetings.call(fbCEO, 'fil'); // this will return: Kamusta, Magandang Araw Sayo  ZuckerBerg!
+
+//2 parameter
+function speaking(lang, isPolite){
+  if(isPolite) {
+    if (lang === 'en'){
+  return `Hello! Good Day ${this.name}`;
+} else {
+  return `Kamusta, Magandang Araw Sayo ${this.name}`
+}
+  }
+
+  if(!isPolite) {
+    if (lang === 'en'){
+  return `Hello! ${this.name}, what do you want?😒`;
+} else {
+  return `Oi ${this.name} Balita dyan?`
+}
+  }
+}
+speaking.call(fbCEO, 'en', true); 
+speaking.call(fbCEO, 'fil', true); 
+speaking.apply(fbCEO, ['en', true]);
+
+//JS Closure
+function human(name){
+  function sayHi(){
+    console.log(`Hi ${name}`)
+  }
+  function howAreYou() {
+    console.log(`${name} is feeling Good.`)
+  }
+  return {
+    sayHi,
+    howAreYou
+  }
+}
+
+const x = human('Bryan'); //call it in browser: x.sayHi() / x.howAreYou()
+const y = human('Devs'); //call it in browser: y.sayHi() / y.howAreYou()
+      </script>
+</body>
+</html>

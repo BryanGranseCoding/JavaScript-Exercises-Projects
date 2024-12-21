@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fetch Pokemon</title>
+</head>
+<body>
+   <script>
+        /* 
+         //fetch with promises in js
+fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.error(err));
+ */
+const fetchAPI = {
+        berry: "https://pokeapi.co/api/v2/berry",
+        berryFirm: "https://pokeapi.co/api/v2/berry-firmness/1",
+                }
+
+ async function getPokemonBerry() {
+
+        const response = await fetch(fetchAPI.berryFirm);
+        const data = await response.json();
+        console.log(data);
+ }
+
+ getPokemonBerry();
+   </script>     
+</body>
+</html>

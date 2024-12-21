@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="switch">
+
+    </div>
+
+    <script>
+        const s = document.getElementById("switch");
+
+        var myAge = prompt("Enter your age:", "30"),
+    msg = [];
+switch (true) {
+
+    case myAge < 0 && myAge > 10:
+        msg.push("myAge is NOT between 0 and 10");
+
+    case myAge >= 0 && myAge <= 10:
+        msg.push("myAge is between 0 and 10");
+
+    case myAge >= 80 || myAge <= 10:
+        msg.push("myAge is 80 or above or 10 or below");
+
+    case myAge >= 30 && myAge <= 39:
+        msg.push("myAge is between 30 and 39");
+
+    case myAge >= 80 && myAge <= 89:
+        msg.push("myAge is between 80 and 89");
+}
+document.write(msg.join('<br />'));
+    </script>
+</body>
+</html>

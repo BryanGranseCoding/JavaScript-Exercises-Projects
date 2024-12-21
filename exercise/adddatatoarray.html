@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #displaydata{
+            margin-top: 15px;
+        }
+        .successSaveHide{
+            display: none;
+        }
+        .failedSaveHide{
+            display: none;
+        }
+        .successSaveShow{
+            display: block;
+            color:green;
+        }
+        .failedSaveShow{
+            display: block;
+            color:rgb(237, 145, 167);
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Data to Array</title>
+</head>
+<body>
+    <input type="text" placeholder="input name..." id="data">
+    <button id="saveBtn">Save</button><button id="deleteAll" onclick="deleteAllData()">Delete ALL</button>
+    <p id="successSave" class="successSaveHide">Successfully Save!</p>
+    <p id="failedSave" class="failedSaveHide">data already exists! / No Data Inputted</p>
+    <div id="displaydata">
+    </div>
+</body>
+<script async src="app.js"></script>
+</html>
