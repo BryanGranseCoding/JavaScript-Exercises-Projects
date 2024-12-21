@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Password</title>
+</head>
+<link rel="stylesheet" href="./style.css">
+<body>
+    <div class="myPass">
+        <input type="text" name="passlength" id="inputPassLength" placeholder="Please input length...">
+        <!--button id="clickMe" type="submit" onclick="randomPassword()">Generate Password</button-->
+        <button id="clickMe" type="submit">Generate Password</button>
+        <label>Your Password is: <span class="resultPass"></span></label>
+    </div>
+    <div class="statusNotif">
+        <span class="msg"></span>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;
+    </div>
+
+
+    <script src="./generatePass.js"></script>
+    <script src="./restrictInputData.js"></script>
+</body>
+</html>

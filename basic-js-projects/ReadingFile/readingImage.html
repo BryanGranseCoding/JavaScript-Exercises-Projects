@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Reading</title>
+</head>
+<body>
+    <input type="file">
+    <div id="preview"></div>
+
+    <script>
+/* const fileInput = document.querySelector('[type="file"]');
+const preview = document.getElementById('preview');
+
+ fileInput.addEventListener('change', () => {
+// This function runs when file is selected
+
+    const fr = new FileReader(); 
+    // Creates new FileReader instance
+
+    fr.readAsDataURL(fileInput.files[0]);
+    // Reads user-selected file (other reading methods possible)
+    
+    fr.addEventListener('load', () => {
+        // This function runs when reading is complete
+        
+        const url = fr.result;
+        // Result always available on result property on the file reader
+
+        console.log(url); 
+        // data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA14AAAOaCA... (very long!)
+        
+    })
+
+}); */
+
+const fileInput = document.querySelector('[type="file"]');
+const preview = document.getElementById('preview');
+
+fileInput.addEventListener('change', () => {
+
+    const fr = new FileReader();
+
+    fr.readAsDataURL(fileInput.files[0]);
+    
+    fr.addEventListener('load', () => {
+
+        const url = fr.result;
+        
+        const img = new Image();
+        img.src = url;
+        // Sets data URL to image src
+
+        img.onload = () => {
+            // This function runs when image has loaded
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            // Creates new 2D canvas element
+
+            canvas.width = img.width;
+            canvas.height = img.height;
+            // Sets height and width of canvas to image dimensions
+
+            ctx.filter = 'grayscale(1)';
+            ctx.drawImage(img, 0, 0);
+            // Apply grayscale filter to canvas and draw image
+
+            preview.appendChild(canvas);
+            // Display editied image in canvas
+
+        }
+        
+    })
+
+});
+//Source: https://openjavascript.info/2022/12/15/read-a-file-into-javascript-using-filereader/
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch JSON from API and map latitude/longtitude</title>
+    <style>#issMap { height: 180px; }</style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+</head>
+<body>
+    <h1>Checking The Location of ISS</h1>
+    <p>Latitude: <span id="lat"></span>°<br />
+       Longitude: <span id="lon"></span>°
+    </p>
+    <!-- Displaying The Map -->
+    <div id="issMap"></div>
+
+    <script>
+    let log = console.log;
+
+//declaring the map view the Letter L represent the leafletJS
+const bryanDevsMap = L.map('issMap').setView([0, 0], 1);
+// OpenStreetMap Tile for Map
+const attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+//tile variable
+tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const tiles = L.tileLayer(tileUrl, { attribution });
+tiles.addTo(bryanDevsMap);
+
+//Custom iCon code from leafLetJS docs - Making Custom Icon as a Marker
+const issIcon = L.icon({
+    iconUrl: 'iss.png',
+    iconSize: [50, 32],
+    iconAnchor: [25, 16],
+});
+
+//declaring or creating the marker of the map
+const marker = L.marker([0, 0], {icon: issIcon}).addTo(bryanDevsMap);
+
+
+//declaring bolean variable to set only auto view 1 time
+let firstTime = true;
+
+//fetching API
+//declaring api URL
+const api_url = "https://api.wheretheiss.at/v1/satellites/25544";
+//create function to fetch the API being declared in variable 'api_url' above
+async function getISS() {
+
+    const response = await fetch(api_url);
+    const data = await response.json();
+    //log(data);
+
+   /* 
+   //logging the longitude and latitude 
+   log(data.latitude)
+    log(data.longitude)
+    */
+   
+    //destructuring to assign value from js to object 'latitudeData and longitudeData'
+    const { latitude, longitude } = data;
+    //log(`Latitude: ${latitude} , Longitude: ${longitude}`);
+
+    //Putting a marker to Map base on the declared variable
+    //L.marker([latitude, longitude]).addTo(bryanDevsMap);
+    //This will update the marker base on the latitude and longitude being fetch from API which is desctructured above
+    marker.setLatLng([latitude, longitude]);
+    //auto fit the view at the center base on latitude and longitude data
+    if(firstTime) {
+    bryanDevsMap.setView([latitude, longitude], 2);
+    firstTime = false;
+    }
+    //Displaying the Data into the DOM page
+    //document.getElementById('lat').textContent = latitude;
+    //document.querySelector('#lon').textContent = longitude;
+    document.getElementById('lat').textContent = latitude.toFixed(2);
+    document.querySelector('#lon').textContent = longitude.toFixed(2);
+}
+//caling the function to get the data in console
+//getISS();
+setInterval(getISS, 1000); // this will auto update/refresh the API data using the time set - will call the function every 1seconds or 1000 milliseconds 
+
+//SOURCE: https://www.youtube.com/watch?v=jKQUHGpOHqg
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reqres Fetching API for Testing</title>
+    <link rel="shortcut icon" href="data:" type="image/x-icon">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="dataDiv" id="dataDIV">
+        
+        <div class="result_box" id="resultBox">
+          
+        </div>
+      
+    </div>
+
+<script>
+const resultBox = document.querySelector('#resultBox');
+const reqResUrlAPI = 'https://reqres.in/api/users?page=1';
+
+//declaring variables for DOM elements
+/* const img = document.querySelector('#img');
+const email = document.querySelector('#email'); */
+
+fetch(reqResUrlAPI)
+.then(response =>{
+    return response.json();
+})
+.then(data => {
+    data.data.forEach(function(val){
+      //console.log(val.first_name);
+      resultBox.innerHTML += `Name: ${val.first_name} ${val.last_name} <br> Email: ${val.email} <br> Person's ID: ${val.id} <br> AVATAR URL: ${val.avatar} <br><br>`;
+
+      const img = document.createElement('img');
+      img.src = val.avatar;
+      resultBox.insertBefore(img, resultBox.childNodes[0]);
+    })
+})
+</script>
+</body>
+</html>

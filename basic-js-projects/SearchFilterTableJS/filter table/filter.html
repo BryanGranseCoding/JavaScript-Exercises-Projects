@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script>
+	$(document).ready(function(){
+   $("#myInput").on("keyup",function(){
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function(){
+   $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+
+    });
+
+   });
+
+	});
+</script>
+
+</head>
+
+<style>
+	
+body{
+   justify-content: center;
+   align-content: center;
+   align-items: center;
+   padding: 5% 22%;
+   background-image: url(https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000);
+   background-size: cover;
+}
+
+h2{
+	font-family: gotham;
+	color: #555;
+	font-size: 1cm;
+	margin-left: 30%;
+}
+
+table{
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td , th {
+	text-align: left;
+	padding: 8px;
+}
+
+.main{
+	height: 100%;
+	width: 800px;
+	background-color: #fff;
+	padding: 5px 10px 10px 10px;
+	border-radius: 30px 30px 30px 30px;
+	box-shadow: 16px 22px 51px -24px rgba(51,50,52,0.48);
+}
+</style>
+<body>
+
+<div class="main">
+	<h2>Filter Table</h2><br>
+	<input id="myInput" type="text" placeholder="Search..." class="form-control"><br><br>
+
+	<table class="table table-hover">
+		<thead class="thead-dark">
+			<tr>
+				<th>ID </th>
+				<th>FirstName</th>
+				<th>LastName</th>
+				<th>Email</th>
+				<th>City</th>
+			</tr>
+			<tbody id="myTable">
+				<tr>
+					<th>1</th>
+					<th>Nickson</th>
+					<th>Parvaiz</th>
+					<th>nick@gmail.com</th>
+					<th>new york</th>
+				</tr>
+
+             				<tr>
+					<th>2</th>
+					<th>Farhan</th>
+					<th>Ramzan</th>
+					<th>farhan@gmail.com</th>
+					<th>Karachi</th>
+				</tr>
+
+								<tr>
+					<th>3</th>
+					<th>Rafay</th>
+					<th>abdullah</th>
+					<th>rafay@gmail.com</th>
+					<th>Dubai</th>
+				</tr>
+
+
+								<tr>
+					<th>4</th>
+					<th>John</th>
+					<th>Everiest</th>
+					<th>john@gmail.com</th>
+					<th>London</th>
+				</tr>
+
+
+								<tr>
+					<th>5</th>
+					<th>Ali</th>
+					<th>Bilal</th>
+					<th>ali@gmail.com</th>
+					<th>new york</th>
+				</tr>
+
+
+
+			</tbody>
+
+		</thead>
+		
+	</table>
+	
+</div>
+
+
+
+</body>
+</html>

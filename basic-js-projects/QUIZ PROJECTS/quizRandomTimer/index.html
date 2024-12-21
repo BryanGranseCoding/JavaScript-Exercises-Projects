@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz</title>
+</head>
+<body>
+	<h1>Quiz</h1>
+	<form id="quiz-form">
+		<p>1. What is the capital of France?</p>
+		<input type="radio" name="q1" value="a"> a. Madrid<br>
+		<input type="radio" name="q1" value="b"> b. Paris<br>
+		<input type="radio" name="q1" value="c"> c. London<br>
+
+		<p>2. Who was the first president of the United States?</p>
+		<input type="radio" name="q2" value="a"> a. George Washington<br>
+		<input type="radio" name="q2" value="b"> b. Thomas Jefferson<br>
+		<input type="radio" name="q2" value="c"> c. Abraham Lincoln<br>
+
+		<p>3. What is the largest organ in the human body?</p>
+		<input type="radio" name="q3" value="a"> a. Brain<br>
+		<input type="radio" name="q3" value="b"> b. Liver<br>
+		<input type="radio" name="q3" value="c"> c. Skin<br>
+
+		<button type="button" onclick="submitQuiz()">Submit</button>
+	</form>
+
+	<p id="timer"></p>
+	<p id="results"></p>
+
+	<script>
+		// Set random time limit between 20 and 30 seconds
+		var timeLimit = Math.floor(Math.random() * (30 - 20 + 1) + 20);
+		document.getElementById("timer").innerHTML = "Time Left: " + timeLimit + " seconds";
+
+		// Set timer
+		var interval = setInterval(function() {
+			timeLimit--;
+			document.getElementById("timer").innerHTML = "Time Left: " + timeLimit + " seconds";
+			if (timeLimit <= 0) {
+				clearInterval(interval);
+				submitQuiz();
+			}
+		}, 1000);
+
+		// Check quiz answers and display results
+		function submitQuiz() {
+			clearInterval(interval);
+
+			var quizForm = document.getElementById("quiz-form");
+			var results = document.getElementById("results");
+
+			var correctAnswers = 0;
+			var incorrectAnswers = [];
+
+			// Check question 1
+			if (quizForm.q1.value === "b") {
+				correctAnswers++;
+			} else {
+				incorrectAnswers.push("1");
+			}
+
+			// Check question 2
+			if (quizForm.q2.value === "a") {
+				correctAnswers++;
+			} else {
+				incorrectAnswers.push("2");
+			}
+
+			// Check question 3
+			if (quizForm.q3.value === "c") {
+				correctAnswers++;
+			} else {
+				incorrectAnswers.push("3");
+			}
+
+			results.innerHTML = "You got " + correctAnswers + " out of 3 questions correct.";
+
+			if (incorrectAnswers.length > 0) {
+				results.innerHTML += "<br>Incorrect answers: " + incorrectAnswers.join(", ");
+			}
+		}
+	</script>
+</body>
+</html>
