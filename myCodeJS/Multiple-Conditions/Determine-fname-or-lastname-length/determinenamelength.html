@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is Name or Last Name Long?</title>
+</head>
+<body>
+
+<div id="fname">
+    <h3>Longest Length of Name in Condition</h3>
+    <p id="fullName">Bryan Devs</p>
+</div>
+<div class="output"></div>
+<hr>
+<script>
+const fullName = document.querySelector('#fullName');
+const fullNameText = fullName.textContent;
+const displayOutput = document.querySelector('.output');
+
+//Slice String to Get Firstname and Last Name in one Line of String
+const fName = fullNameText.slice(0, fullNameText.indexOf(' '));
+const lName = fullNameText.slice(fullNameText.indexOf(' ')+ 1);
+
+//declare the length of Firstname and Last Name
+const fNameLength = fName.length;
+const lNameLength = lName.length;
+
+//condition
+const whoIsLong = (firstname, lastname) =>{
+    if(firstname > lastname){
+        displayOutput.textContent = `${fName} is the Longest Length here..`;
+    }else if(firstname < lastname){
+        displayOutput.textContent = `${lName} is the Longest Length here..`;
+    }else{displayOutput.textContent = `${fName} is equal to ${lName}..`;}
+
+    return displayOutput;
+}
+
+displayOutput.textContent === whoIsLong(fNameLength, lNameLength);
+</script>
+</body>
+</html>
