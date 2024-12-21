@@ -1,0 +1,20 @@
+{
+    "books": [
+        {
+            "title": "Learn to Code",
+            "author": "Bryan Devs",
+            "isbn": "324-23243"
+        },
+        {
+            "title": "The Adventure JSON",
+            "author": "Jason Jones",
+            "isbn": "3324-2-444"
+        },
+        {
+            "title": "New Objects",
+            "author": "Jane Doe",
+            "isbn": "2343-234-2433"
+        }
+
+    ]
+}
